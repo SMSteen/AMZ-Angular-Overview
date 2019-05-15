@@ -2,6 +2,10 @@
   color: #b30000;
   font-weight: bold;
 }
+.done {
+  color: #2d8659;
+  font-weight: bold;
+}
 table {
   width: 80%;
   border: 1px dotted #252525;
@@ -23,7 +27,8 @@ tbody tr:nth-of-type(odd):hover {
   color: white;
 }
 tr:hover a,
-tr:hover .open {
+tr:hover .open,
+tr:hover .done {
   color: white;
   font-weight: normal;
 }

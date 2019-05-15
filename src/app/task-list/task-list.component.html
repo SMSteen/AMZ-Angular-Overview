@@ -1,27 +1,32 @@
-<table>
-  <thead>
-    <th>ID</th>
-    <th>Title</th>
-    <th>Completed</th>
-    <th>Actions</th>
-  </thead>
-  <tbody>
-    <!-- loop through list of tasks using an ngFor -->
-    <tr *ngFor="let task of tasks">
-      <td>{{ task.id }}</td>
-      <td>{{ task.title }}</td>
-      <!-- instead of displaying a boolean value to our user, we can use ngIf to test conditional and display different text -->
-      <td *ngIf="task.completed == true">Completed</td>
-      <!-- 
-        dynamically set a class (which can then be styled) based on a given condition
-        in below example, apply class 'open' if task.completed is false
-        notice the [] around ngClass - we need to bind to the expression (if task.completed is false) -->
-      <td [ngClass]="{'open':task.completed === false}" *ngIf="task.completed == false">Not Yet</td>
-      <td>
-        <a href="#">View</a>
-        <a href="#">Edit</a>
-        <a href="#">Delete</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <h1>Our Task List</h1>
+  <table>
+    <thead>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Completed</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <!-- loop through list of tasks using an ngFor -->
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.id }}</td>
+        <td>{{ task.title }}</td>
+        <!-- instead of displaying a boolean value to our user, we can use ngIf to test conditional and display different text -->
+        <td [ngClass]="{'done':task.completed === true}" *ngIf="task.completed == true">Done!</td>
+        <!-- 
+          dynamically set a class (which can then be styled) based on a given condition
+          in below example, apply class 'open' if task.completed is false
+          notice the [] around ngClass - we need to bind to the expression (if task.completed is false) -->
+        <td [ngClass]="{'open':task.completed === false}" *ngIf="task.completed == false">Not Yet</td>
+        <td>
+          <span><a href="#">View</a></span>
+          <span><a href="#">Edit</a></span>
+          <span> <a href="#">Delete</a></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-task-new></app-task-new>

@@ -22,5 +22,6 @@ export class TaskNewComponent implements OnInit {
     // reset the form, but create new instance of Task first before doing so; this preps for next form submission
     this.newTask = new Task();
     form.reset();
+    console.log('form has been reset');
   }
 }

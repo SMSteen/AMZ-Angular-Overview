@@ -23,7 +23,7 @@ export const TASKS = [
     id: '3',
     title: 'Pay Cable Bill',
     description: '',
-    completed: false,
+    completed: true,
     assigned: ['Mike', 'Donna', 'Matthew S'],
     created_at: 1557799086,
     updated_at: 1557799086
