@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Task } from '../task';
 
@@ -9,6 +9,8 @@ import { Task } from '../task';
 })
 export class TaskNewComponent implements OnInit {
   newTask: Task = new Task(); // create a new instance of Task which our form will be bound to
+  @Output() addTask = new EventEmitter<Task>();
+  @Input() parentData: string;
 
   constructor() {}
 
@@ -18,7 +20,7 @@ export class TaskNewComponent implements OnInit {
     event.preventDefault();
     console.log('form was submitted', form);
     console.log('new task created', this.newTask);
-
+    this.addTask.emit(this.newTask);
     // reset the form, but create new instance of Task first before doing so; this preps for next form submission
     this.newTask = new Task();
     form.reset();

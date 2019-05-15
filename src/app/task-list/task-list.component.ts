@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TASKS } from '../tasks-data';
+import { Task } from '../task';
 
 @Component({
   selector: 'app-task-list',
@@ -7,12 +8,19 @@ import { TASKS } from '../tasks-data';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
-  tasks = TASKS;
+  tasks: Task[] = TASKS;
   color = 'orange';
+  tyMsg: string;
 
   constructor() {}
 
   ngOnInit() {
     console.log(this.tasks);
+  }
+
+  addNewTask(task: Task) {
+    console.log('in task-list.component, adding task', task);
+    this.tasks.push(task);
+    this.tyMsg = 'Thank you my child for the new task.';
   }
 }

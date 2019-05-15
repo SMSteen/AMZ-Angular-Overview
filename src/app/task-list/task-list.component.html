@@ -29,4 +29,4 @@
   </table>
 </div>
 
-<app-task-new></app-task-new>
+<app-task-new (addTask)='addNewTask($event)' [parentData]='tyMsg'></app-task-new>
