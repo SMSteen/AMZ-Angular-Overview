@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  padding: 25px;
+}
+.footer {
+  padding: 0 10px;
+}
+footer {
+  display: inline-block;
+}
+img.footer-logo {
+  width: 3%;
+  margin-right: 5px;
+}

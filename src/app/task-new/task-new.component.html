@@ -1,0 +1,55 @@
+<!-- 
+    (submit)='onSubmit($event, form)' -- bind the form submission event to onSubmit method in our component
+    #form="ngForm" -- name our form so we can access form properties (i.e. form.value, form.valid, etc.)
+-->
+<form (submit)='onSubmit($event, form)' #form="ngForm">
+    <fieldset>
+        <legend>Add A New Task</legend>
+        <div>
+            <label for="title">Name Your Task</label>
+            <!-- 
+                required -- invalid if not completed
+                minlength -- invalid until at least that number of characters entered
+                maxlength -- invalid if length exceeds given number
+                pattern -- invalide if does not match pattern, such as with a regex (good for emails, passwords, etc)
+                [(ngModel)]="newTask.title" -- binds value of input to variable created in component
+                #title = "ngModel" -- allows access to validations for the specific field
+             -->
+            <input type="text" name="title" required minlength="3" maxlength="25" [(ngModel)]="newTask.title"
+                #title="ngModel" [ngModelOptions]="{updateOn: 'blur'}">
+
+            <!-- error message to appear when field has been touched (received focus) OR data entered, but data is invalid -->
+            <p *ngIf="title.invalid && (title.dirty || title.touched)" class="text-error">
+                Oops, you forgot to give your task a Name or the name was too short (less than 3 characters).
+            </p>
+        </div>
+        <div>
+            <label for="description">Describe your Task</label>
+            <input type="text" name="description" required minlength="5" [(ngModel)]="newTask.description"
+                #description="ngModel">
+
+            <p *ngIf="description.invalid && (description.dirty || description.touched)" class="text-error">
+                Oops, you forgot to describe the task or the descirption was too short (less than 5 characters).
+            </p>
+        </div>
+
+        <div>
+            <label for="assigned">Assigned to</label>
+            <select name="assigned" [(ngModel)]="newTask.assigned" #assigned="ngModel">
+                <option value="not selected">Not Assigned</option>
+                <option value="Shannon">Shannon</option>
+                <option value="Tim">Tim</option>
+            </select>
+        </div>
+        <!-- show a submit button when the form (and all field entries) is valid -->
+        <button type="submit" *ngIf="form.valid">Add Task</button>
+        <!-- optional method to show a disabled button if the form is not valid -->
+        <button type="submit" *ngIf="!form.valid" disabled>Add Task</button>
+    </fieldset>
+</form>
+
+<!--
+    [] - Angular shorthand for property binding;
+    () - Angular shorthand for event binding; 
+    [()] - Angular shorthand for property AND event binding
+-->

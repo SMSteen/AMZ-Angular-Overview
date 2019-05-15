@@ -1,0 +1,40 @@
+.open {
+  color: #b30000;
+  font-weight: bold;
+}
+table {
+  width: 80%;
+  border: 1px dotted #252525;
+  border-collapse: collapse;
+}
+thead {
+  font-size: 14pt;
+}
+thead th {
+  font-weight: bold;
+  text-align: left;
+}
+tbody tr:nth-of-type(odd) {
+  background-color: rgba(41, 163, 163, 0.2);
+}
+tr:hover,
+tbody tr:nth-of-type(odd):hover {
+  background-color: rgba(20, 82, 82);
+  color: white;
+}
+tr:hover a,
+tr:hover .open {
+  color: white;
+  font-weight: normal;
+}
+th,
+td {
+  padding: 10px;
+}
+th:nth-of-type(2),
+td:nth-of-type(2) {
+  width: 20%;
+}
+span {
+  padding: 10px;
+}
