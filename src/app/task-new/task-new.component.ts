@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Task } from '../task';
+import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-task-new',
@@ -12,7 +13,7 @@ export class TaskNewComponent implements OnInit {
   @Output() addTask = new EventEmitter<Task>();
   @Input() parentData: string;
 
-  constructor() {}
+  constructor(private taskService: TasksService) {}
 
   ngOnInit() {}
 
@@ -20,7 +21,16 @@ export class TaskNewComponent implements OnInit {
     event.preventDefault();
     console.log('form was submitted', form);
     console.log('new task created', this.newTask);
-    this.addTask.emit(this.newTask);
+    this.taskService.createTask(this.newTask).subscribe(
+      newtask => {
+        console.log('task-new.component, added a new task', newtask);
+        this.addTask.emit(newtask);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
     // reset the form, but create new instance of Task first before doing so; this preps for next form submission
     this.newTask = new Task();
     form.reset();
