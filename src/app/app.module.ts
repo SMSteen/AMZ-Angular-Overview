@@ -9,13 +9,15 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskNewComponent } from './task-new/task-new.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { TasksService } from './tasks.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskListComponent,
     TaskNewComponent,
-    TaskDetailsComponent
+    TaskDetailsComponent,
+    PageNotFoundComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [TasksService],

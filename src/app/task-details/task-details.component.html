@@ -1,4 +1,13 @@
-<h1>Task {{task?.id}}</h1>
-<p>Title: {{task?.title}}</p>
-<p>Title: {{task?.description}}</p>
-<p>Title: {{task?.assigned_to}}</p>
+<div class="container">
+    <h1>Task {{task?.pk}} Details</h1>
+    <p>Title: {{task?.fields.title}}</p>
+    <p>Description: {{task?.fields.description}}</p>
+    <p>Assigned To:</p>
+    <ul>
+        <li *ngFor="let person of task?.fields.assigned">{{ person }}</li>
+    </ul>
+
+    <a [routerLink]="['/tasks']">Return to Task List</a>
+    <a [routerLink]="['/tasks', 'new']">Add a New Task</a>
+
+</div>

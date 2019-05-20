@@ -7,7 +7,8 @@ import { Task } from './task';
   providedIn: 'root'
 })
 export class TasksService {
-  baseURL = 'https://5b905f7b3ef10a001445d02e.mockapi.io/tasks/';
+  // baseURL = 'https://5b905f7b3ef10a001445d02e.mockapi.io/tasks/';
+  baseURL = 'http://localhost:8000/api/tasks';
 
   constructor(private http: HttpClient) {}
 
