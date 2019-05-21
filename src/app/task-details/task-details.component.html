@@ -9,5 +9,6 @@
 
     <a [routerLink]="['/tasks']">Return to Task List</a>
     <a [routerLink]="['/tasks', 'new']">Add a New Task</a>
+    <button (click)="deleteTask(task?.pk)">Delete</button>
 
 </div>

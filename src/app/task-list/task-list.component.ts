@@ -32,4 +32,19 @@ export class TaskListComponent implements OnInit {
     this.tasks.push(task);
     this.tyMsg = 'Thank you my child for the new task.';
   }
+
+  deleteTask(taskId: number) {
+    this.taskService.deleteTask(taskId).subscribe(
+      data => {
+        console.log(
+          'in task-list.component, successfully deleted a task',
+          data
+        );
+        this.tasks = this.tasks.filter(task => data[0].pk !== task.pk);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 }

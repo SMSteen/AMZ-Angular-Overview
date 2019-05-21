@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TASKS } from '../tasks-data';
 import { TasksService } from '../tasks.service';
 import { Task } from '../task';
@@ -15,7 +15,8 @@ export class TaskDetailsComponent implements OnInit {
 
   constructor(
     private taskService: TasksService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -33,5 +34,20 @@ export class TaskDetailsComponent implements OnInit {
         }
       );
     console.log(this.task);
+  }
+
+  deleteTask(taskId: number) {
+    this.taskService.deleteTask(taskId).subscribe(
+      data => {
+        console.log(
+          'in task-list.component, successfully deleted a task',
+          data
+        );
+        this.router.navigateByUrl('/tasks');
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

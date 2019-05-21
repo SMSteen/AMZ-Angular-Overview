@@ -8,7 +8,7 @@ import { Task } from './task';
 })
 export class TasksService {
   // baseURL = 'https://5b905f7b3ef10a001445d02e.mockapi.io/tasks/';
-  baseURL = 'http://localhost:8000/api/tasks';
+  baseURL = 'http://localhost:8000/api/tasks/';
 
   constructor(private http: HttpClient) {}
 
@@ -17,11 +17,15 @@ export class TasksService {
   }
 
   getTask(id): Observable<Task> {
-    return this.http.get<Task>(`${this.baseURL}/${id}`);
+    return this.http.get<Task>(`${this.baseURL}${id}`);
     // return this.http.get<Task>(this.baseURL + id);
   }
 
   createTask(task): Observable<Task> {
     return this.http.post<Task>(this.baseURL, task);
+  }
+
+  deleteTask(id): Observable<Task> {
+    return this.http.delete<Task>(`${this.baseURL}${id}/delete`);
   }
 }

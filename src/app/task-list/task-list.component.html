@@ -22,8 +22,8 @@
         <td [ngClass]="{'open':task.fields.completed === false}" *ngIf="task.fields.completed == false">Not Yet</td>
         <td>
           <span><a [routerLink]="task.pk">View</a></span>
-          <span><a href="#">Edit</a></span>
-          <span> <a href="#">Delete</a></span>
+          <!-- <span><a href="#">Edit</a></span> -->
+          <button (click)="deleteTask(task.pk)">Delete</button>
         </td>
       </tr>
     </tbody>

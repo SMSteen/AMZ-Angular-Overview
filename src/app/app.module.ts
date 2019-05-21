@@ -9,6 +9,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskNewComponent } from './task-new/task-new.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { TasksService } from './tasks.service';
+import { PeopleService } from './people.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
@@ -20,7 +21,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     PageNotFoundComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [TasksService],
+  providers: [TasksService, PeopleService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

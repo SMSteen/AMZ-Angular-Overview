@@ -39,8 +39,8 @@
                 <label for="assigned">Assigned to</label>
                 <select name="assigned" [(ngModel)]="newTask.assigned" #assigned="ngModel">
                     <option value="not selected">Not Assigned</option>
-                    <option value="Shannon">Shannon</option>
-                    <option value="Tim">Tim</option>
+                    <option *ngFor="let person of people" value="{{person.pk}}">{{person.fields.first_name}}
+                        {{person.fields.last_name}}</option>
                 </select>
             </div>
             <!-- show a submit button when the form (and all field entries) is valid -->
