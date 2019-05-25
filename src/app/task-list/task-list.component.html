@@ -21,7 +21,7 @@
           notice the [] around ngClass - we need to bind to the expression (if task.completed is false) -->
         <td [ngClass]="{'open':task.fields.completed === false}" *ngIf="task.fields.completed == false">Not Yet</td>
         <td>
-          <span><a [routerLink]="task.pk">View</a></span>
+          <a [routerLink]="task.pk" class="button">View</a>
           <!-- <span><a href="#">Edit</a></span> -->
           <button (click)="deleteTask(task.pk)">Delete</button>
         </td>

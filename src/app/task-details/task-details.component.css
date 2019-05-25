@@ -6,3 +6,23 @@ ul {
 ul li {
   list-style: none;
 }
+button,
+.button {
+  background-color: lightgray;
+  padding: 5px;
+  margin: 0 5px;
+  border-radius: 5px;
+  color: rgb(20, 82, 82);
+  font-weight: bold;
+  text-decoration: none;
+}
+button {
+  height: 32px;
+}
+.button {
+  display: inline-block;
+  border: 2px outset buttonface;
+}
+.button-container {
+  padding: 25px 0;
+}

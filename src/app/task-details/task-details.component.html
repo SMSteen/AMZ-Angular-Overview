@@ -6,9 +6,10 @@
     <ul>
         <li *ngFor="let person of task?.fields.assigned">{{ person }}</li>
     </ul>
-
-    <a [routerLink]="['/tasks']">Return to Task List</a>
-    <a [routerLink]="['/tasks', 'new']">Add a New Task</a>
-    <button (click)="deleteTask(task?.pk)">Delete</button>
+    <div class="button-container">
+        <a [routerLink]="['/tasks']" class="button">Return to Task List</a>
+        <a [routerLink]="['/tasks', 'new']" class="button">Add a New Task</a>
+        <button (click)="deleteTask(task?.pk)">Delete</button>
+    </div>
 
 </div>
