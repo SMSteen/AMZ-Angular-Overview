@@ -6,6 +6,7 @@
       <th>ID</th>
       <th>Title</th>
       <th>Completed</th>
+      <th># of Assignees</th>
       <th>Actions</th>
     </thead>
     <tbody>
@@ -20,6 +21,7 @@
           in below example, apply class 'open' if task.completed is false
           notice the [] around ngClass - we need to bind to the expression (if task.completed is false) -->
         <td [ngClass]="{'open':task.fields.completed === false}" *ngIf="task.fields.completed == false">Not Yet</td>
+        <td>{{task.fields.assigned.length}}</td>
         <td>
           <a [routerLink]="task.pk" class="button">View</a>
           <!-- <span><a href="#">Edit</a></span> -->

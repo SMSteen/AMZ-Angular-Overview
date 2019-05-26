@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Person } from './person';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,14 @@ export class PeopleService {
   getPeople(): Observable<Person[]> {
     return this.http.get<Person[]>(this.baseURL);
   }
+
+  getPerson(personID: any): Observable<PersonTasks> {
+    console.log(personID);
+    return this.http.get<PersonTasks>(`${this.baseURL}/${personID}`);
+  }
 }
 
-interface Person {
-  first_name: string;
-  last_name: string;
+interface PersonTasks {
+  person: string;
+  tasks: string;
 }

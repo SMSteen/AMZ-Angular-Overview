@@ -20,6 +20,10 @@ export class TaskListComponent implements OnInit {
       tasks => {
         console.log(tasks);
         this.tasks = tasks;
+        this.tasks.sort(
+          (task1, task2) =>
+            task2.fields.assigned.length - task1.fields.assigned.length
+        );
       },
       error => {
         console.log(error);

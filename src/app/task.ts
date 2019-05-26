@@ -6,6 +6,7 @@ export class Task {
   title: string;
   description: string;
   completed: boolean;
+  fields: object;
   assigned: string[];
 
   // constructor() {

@@ -4,7 +4,9 @@
     <p>Description: {{task?.fields.description}}</p>
     <p>Assigned To:</p>
     <ul>
-        <li *ngFor="let person of task?.fields.assigned">{{ person }}</li>
+        <li *ngFor="let person of task?.fields.assigned">
+            <a routerLink="/people/{{person.id}}">{{ person.first_name }} {{ person.last_name }}</a>
+        </li>
     </ul>
     <div class="button-container">
         <a [routerLink]="['/tasks']" class="button">Return to Task List</a>

@@ -4,6 +4,7 @@ import { TaskListComponent } from '../app/task-list/task-list.component';
 import { TaskNewComponent } from '../app/task-new/task-new.component';
 import { TaskDetailsComponent } from '../app/task-details/task-details.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PersonDetailsComponent } from './person-details/person-details.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,11 @@ const routes: Routes = [
         component: TaskDetailsComponent
       }
     ]
+  },
+  {
+    path: 'people/:person_id', // localhost:4200/people/8
+    pathMatch: 'full',
+    component: PersonDetailsComponent
   },
   {
     path: '**', // localhost:4200/anythingNOTlistedabove

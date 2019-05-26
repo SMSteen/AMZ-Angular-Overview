@@ -11,6 +11,7 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
 import { TasksService } from './tasks.service';
 import { PeopleService } from './people.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PersonDetailsComponent } from './person-details/person-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     TaskListComponent,
     TaskNewComponent,
     TaskDetailsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PersonDetailsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [TasksService, PeopleService],
