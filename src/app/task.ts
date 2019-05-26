@@ -1,13 +1,14 @@
 // temp until database connection
 // let idCounter = 11;
-
+import { Person } from './person';
 export class Task {
   pk: number;
-  title: string;
-  description: string;
-  completed: boolean;
-  fields: object;
-  assigned: string[];
+  fields: {
+    title: string;
+    description: string;
+    completed: boolean;
+    assigned: Person[];
+  };
 
   // constructor() {
   //   // inialized completed as false

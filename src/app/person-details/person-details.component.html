@@ -1,10 +1,10 @@
 <div class="container">
-  <h2>{{ person.fields.first_name}} {{person.fields.last_name}} </h2>
+  <h2>{{ person.fields.first_name}} {{person.fields.last_name}}'s Tasks </h2>
   <ul>
     <li *ngFor="let task of tasks">
       <a routerLink="/tasks/{{task.pk}}">{{task.fields.title}}</a>
     </li>
   </ul>
   <p *ngIf="tasks.length > 4">{{person.fields.first_name}} has a lot to do!!</p>
-  <a routerLink="/tasks">Return to Task List</a>
+  <a routerLink="/tasks" class="button">Return to Task List</a>
 </div>
