@@ -1,6 +1,5 @@
 ul {
-  display: inline-block;
-  vertical-align: top;
+  display: block;
   margin: 10px 5px 15px 5px;
 }
 ul li {

@@ -28,4 +28,14 @@ export class TasksService {
   deleteTask(id): Observable<Task> {
     return this.http.delete<Task>(`${this.baseURL}${id}/delete`);
   }
+
+  editTaskAssignment(taskID: number, personID: number): Observable<Task> {
+    console.log(
+      `in tasksService file, adding person ${personID} to task ${taskID}`
+    );
+    const postData = {
+      addPerson: personID
+    };
+    return this.http.post<Task>(`${this.baseURL}${taskID}/edit`, postData);
+  }
 }

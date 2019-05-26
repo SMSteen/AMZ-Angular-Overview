@@ -41,4 +41,21 @@ export class PersonDetailsComponent implements OnInit {
         }
       );
   }
+
+  removeAssignment(taskID: number) {
+    console.log(
+      `in person-details component, removing task ${taskID} from person ${
+        this.person.pk
+      }`
+    );
+    this.peopleService.removeTaskAssignment(taskID, this.person.pk).subscribe(
+      data => {
+        console.log(`in person-details, got updated person back`, data);
+        this.tasks = this.tasks.filter(task => taskID !== task.pk);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 }

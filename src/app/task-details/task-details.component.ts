@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 import { TASKS } from '../tasks-data';
 import { TasksService } from '../tasks.service';
 import { Task } from '../task';
+import { Person } from '../person';
 import { switchMap } from 'rxjs/operators';
+import { PeopleService } from '../people.service';
 
 @Component({
   selector: 'app-task-details',
@@ -12,9 +15,13 @@ import { switchMap } from 'rxjs/operators';
 })
 export class TaskDetailsComponent implements OnInit {
   task: Task;
+  showForm = false;
+  people: Person[];
+  assigneeID: number;
 
   constructor(
     private taskService: TasksService,
+    private peopleService: PeopleService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -49,5 +56,29 @@ export class TaskDetailsComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  showAssignForm() {
+    this.showForm = true;
+    // get a list of people to populate from drop-down
+    this.peopleService.getPeople().subscribe(data => {
+      console.log(data);
+      this.people = data;
+    });
+  }
+
+  addAssignee(event: Event, form: NgForm) {
+    console.log(`form submitted`);
+    this.taskService
+      .editTaskAssignment(this.task.pk, this.assigneeID)
+      .subscribe(
+        data => {
+          console.log(`in task-details component, got updated task back`, data);
+          this.router.navigateByUrl(`/people/${this.assigneeID}`);
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 }

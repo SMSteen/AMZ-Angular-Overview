@@ -19,6 +19,16 @@ export class PeopleService {
     console.log(personID);
     return this.http.get<PersonTasks>(`${this.baseURL}/${personID}`);
   }
+
+  removeTaskAssignment(taskID: number, personID: number): Observable<Person> {
+    console.log(
+      `in personService file, removing ${taskID} from person ${personID}`
+    );
+    const postData = {
+      removeTask: taskID
+    };
+    return this.http.post<Person>(`${this.baseURL}/${personID}/edit`, postData);
+  }
 }
 
 interface PersonTasks {

@@ -11,7 +11,19 @@
     <div class="button-container">
         <a [routerLink]="['/tasks']" class="button">Return to Task List</a>
         <a [routerLink]="['/tasks', 'new']" class="button">Add a New Task</a>
+        <button (click)="showAssignForm()">Assign Task</button>
         <button (click)="deleteTask(task?.pk)">Delete</button>
     </div>
 
+    <div *ngIf="showForm">
+        <form (submit)="addAssignee($event, assignForm)" #assignForm="ngForm">
+            <label for="assigned">Assign To</label>
+            <select name="assigned" [(ngModel)]="assigneeID">
+                <option *ngFor="let person of people" value="{{person.pk}}">{{person.fields.first_name}}
+                    {{person.fields.last_name}}
+                </option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </div>
